@@ -10,7 +10,7 @@ export (int) var jump_speed
 export (int) var gravity
 export (int) var start_vel
 
-var: int velocity
+var velocity: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,7 +34,7 @@ func _process(delta):
    velocity = move_and_slide(Vector2(0.0, velocity)).y
 
    var rotation: float = self.get_rotation()
-   var target_rotation: float = clamp(velocity / 800, -PI/4, PI/4)
+   var target_rotation: float = clamp(velocity / 800, -PI/5, PI/5)
 
    var delta_rot: float = (target_rotation - rotation) * 0.7
 
