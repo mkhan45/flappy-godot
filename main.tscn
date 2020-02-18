@@ -16,8 +16,8 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-jump_speed = 1420
-gravity = 1250
+jump_speed = 1500
+gravity = 1750
 start_vel = -20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
@@ -28,4 +28,5 @@ texture = ExtResource( 1 )
 
 [node name="PipePair" parent="." instance=ExtResource( 3 )]
 position = Vector2( 233.559, 259.393 )
+gap = 50.0
 speed = 300.0
