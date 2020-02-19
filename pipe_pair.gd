@@ -30,7 +30,8 @@ func _ready():
    var gap = root.gap
 
    var top_item_height: float = top_pipe.get_node("Sprite").texture.get_height()
-   var top_item_scale_y: float = top_pipe.get_scale().y
+   var top_item_scale_y: float = top_pipe.get_scale().y * top_pipe.get_node("Sprite").get_scale().y
+
    top_pipe.set_position(Vector2(x_pos, midpoint_y - gap - top_item_height * top_item_scale_y))
    bottom_pipe.set_position(Vector2(x_pos, midpoint_y + gap))
 
@@ -43,7 +44,9 @@ func _process(delta):
 
    x_pos -= speed * delta
 
-   var width = top_pipe.get_node("Sprite").texture.get_width() * top_pipe.get_scale().x
+   var width = top_pipe.get_node("Sprite").texture.get_width() \
+         * top_pipe.get_node("Sprite").get_scale().x \
+         * top_pipe.get_scale().x
 
    var screen_rect: Rect2 = get_viewport().get_visible_rect()
 
@@ -72,7 +75,7 @@ func _process(delta):
       bottom_pos.x = x_pos
 
       var top_item_height: float = top_pipe.get_node("Sprite").texture.get_height()
-      var top_item_scale_y: float = top_pipe.get_scale().y
+      var top_item_scale_y: float = top_pipe.get_scale().y * top_pipe.get_node("Sprite").get_scale().y
 
       top_pos.y = midpoint_y - gap - top_item_height * top_item_scale_y
       bottom_pos.y = midpoint_y + gap

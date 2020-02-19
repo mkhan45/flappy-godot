@@ -18,7 +18,7 @@ func _ready():
    var screen_size: Vector2 = get_viewport().get_visible_rect().size
    var screen_width: float = screen_size.x
 
-   for i in range(8):
+   for i in range(6):
       var pair = pipe_pair.instance()
       pair.x_pos = screen_width + pipe_h_dist * i
       pipe_arr.push_back(pair)
