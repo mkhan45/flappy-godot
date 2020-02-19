@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://black.png" type="Texture" id=1]
 [ext_resource path="res://pipe_pair.gd" type="Script" id=2]
+[ext_resource path="res://pipe.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 35.1101, 32.1771 )
@@ -14,9 +14,9 @@ script = ExtResource( 2 )
 scale = Vector2( 1.75, 20 )
 
 [node name="Sprite" type="Sprite" parent="Top"]
-position = Vector2( 0, 30 )
-scale = Vector2( 17.6587, 16.1001 )
-texture = ExtResource( 1 )
+position = Vector2( -1.17367, 29.9268 )
+scale = Vector2( 0.282296, 0.080301 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top"]
 position = Vector2( 0, 30 )
@@ -26,9 +26,9 @@ shape = SubResource( 1 )
 scale = Vector2( 1.75, 20 )
 
 [node name="Sprite" type="Sprite" parent="Bottom"]
-position = Vector2( 0, 30 )
-scale = Vector2( 17.6587, 16.1001 )
-texture = ExtResource( 1 )
+position = Vector2( -1.17367, 29.9268 )
+scale = Vector2( 0.282, -0.08 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
 position = Vector2( 0, 30 )

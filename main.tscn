@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://black.png" type="Texture" id=1]
+[ext_resource path="res://flappy.png" type="Texture" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
 [ext_resource path="res://main.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32.4361, 33.6237 )
+extents = Vector2( 35.7918, 31.9152 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -1, 0 )
@@ -15,20 +15,19 @@ gap = 125.0
 speed = 350.0
 
 [node name="Bird" type="KinematicBody2D" parent="."]
-position = Vector2( 100, 0 )
+position = Vector2( 152.955, 83.2156 )
 scale = Vector2( 1.25, 1 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 jump_speed = 1500
-gravity = 1750
+gravity = 2250
 start_vel = -20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
+position = Vector2( -3.72826, 0.71698 )
 shape = SubResource( 1 )
 one_way_collision_margin = 0.0
 
 [node name="Sprite" type="Sprite" parent="Bird"]
-scale = Vector2( 16.1774, 16.8584 )
+position = Vector2( -3.15472, -5.37732 )
+scale = Vector2( 0.263908, 0.408497 )
 texture = ExtResource( 1 )
