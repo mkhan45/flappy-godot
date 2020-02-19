@@ -5,13 +5,14 @@
 [ext_resource path="res://main.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32.4361, 33.6237 )
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( -1, 0 )
 script = ExtResource( 3 )
 pipe_h_dist = 500.0
-gap = 50.0
-speed = 200.0
+gap = 125.0
+speed = 350.0
 
 [node name="Bird" type="KinematicBody2D" parent="."]
 position = Vector2( 100, 0 )
@@ -26,6 +27,7 @@ start_vel = -20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bird"]
 shape = SubResource( 1 )
+one_way_collision_margin = 0.0
 
 [node name="Sprite" type="Sprite" parent="Bird"]
 texture = ExtResource( 1 )

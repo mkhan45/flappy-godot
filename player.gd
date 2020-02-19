@@ -4,8 +4,6 @@ extends KinematicBody2D
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
-var screen_size
-
 export (int) var jump_speed
 export (int) var gravity
 export (int) var start_vel
@@ -14,7 +12,6 @@ var velocity: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-   screen_size = get_viewport_rect().size
    set_process(true)
    velocity = start_vel
 
@@ -39,3 +36,8 @@ func _process(delta):
    var delta_rot: float = (target_rotation - rotation) * 0.7
 
    self.set_rotation(rotation + delta_rot)
+
+   var screen_rect: Rect2 = get_viewport().get_visible_rect()
+   var screen_size: Vector2 = screen_rect.size
+   if get_position().y > screen_size.y || get_position().y < -250:
+      get_tree().change_scene("res://main.tscn")

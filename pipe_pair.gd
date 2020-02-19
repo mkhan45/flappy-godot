@@ -18,9 +18,10 @@ func _ready():
    bottom_pipe = get_node("Bottom")
    collided = false
 
+   set_physics_process(true)
+
    randomize()
    var screen_size: Vector2 = get_viewport().get_visible_rect().size
-   var screen_width: float = screen_size.x
    var screen_height: float = screen_size.y
 
    midpoint_y = rand_range(screen_height * 0.3, screen_height * 0.7)
@@ -40,9 +41,6 @@ func _process(delta):
    var gap = root.gap
    var speed = root.speed
 
-   var top_pipe_pos = top_pipe.get_position()
-   var bottom_pipe_pos = bottom_pipe.get_position()
-
    x_pos -= speed * delta
 
    var width = top_pipe.get_node("Sprite").texture.get_width() * top_pipe.get_scale().x
@@ -55,13 +53,23 @@ func _process(delta):
    top_pos.x = x_pos
    bottom_pos.x = x_pos
 
-   if x_pos + width + 200 < screen_rect.position.x:
+   if x_pos + width < screen_rect.position.x:
       var screen_size: Vector2 = screen_rect.size
-      var screen_width: float = screen_size.x
       var screen_height: float = screen_size.y
       
       midpoint_y = rand_range(screen_height * 0.3, screen_height * 0.7)
-      x_pos = screen_width
+
+      var pipe_arr = get_node("../../Node2D").pipe_arr
+      var pipe_h_dist = get_node("../../Node2D").pipe_h_dist
+
+      var max_x = 0
+      for pipe in pipe_arr:
+         max_x = max(max_x, pipe.x_pos)
+
+      x_pos = max_x + pipe_h_dist
+
+      top_pos.x = x_pos
+      bottom_pos.x = x_pos
 
       var top_item_height: float = top_pipe.get_node("Sprite").texture.get_height()
       var top_item_scale_y: float = top_pipe.get_scale().y
@@ -75,3 +83,4 @@ func _process(delta):
    var bird: KinematicBody2D = get_node("../Bird")
    if top_pipe.overlaps_body(bird) || bottom_pipe.overlaps_body(bird):
       get_tree().change_scene("res://main.tscn")
+

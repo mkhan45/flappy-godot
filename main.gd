@@ -11,24 +11,18 @@ export (float) var pipe_h_dist
 export (float) var gap = 200
 export (float) var speed = 100
 
+var pipe_arr: Array
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
    var screen_size: Vector2 = get_viewport().get_visible_rect().size
    var screen_width: float = screen_size.x
-   var screen_height: float = screen_size.y
 
-   var pipe1 = pipe_pair.instance()
-   var pipe2 = pipe_pair.instance()
-   var pipe3 = pipe_pair.instance()
-
-   pipe1.x_pos = screen_width
-   pipe2.x_pos = screen_width + pipe_h_dist * 2
-   pipe3.x_pos = screen_width + pipe_h_dist * 3
-
-   add_child(pipe1)
-   add_child(pipe2)
-   add_child(pipe3)
-
+   for i in range(8):
+      var pair = pipe_pair.instance()
+      pair.x_pos = screen_width + pipe_h_dist * i
+      pipe_arr.push_back(pair)
+      add_child(pair)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
